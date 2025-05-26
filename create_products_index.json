@@ -1,0 +1,32 @@
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "vi_en_analyzer": {
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "asciifolding"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "id": {
+        "type": "keyword"
+      },
+      "name": {
+        "type": "text",
+        "analyzer": "vi_en_analyzer"
+      },
+      "stockNumber": {
+        "type": "integer"
+      },
+      "summaryOrder": {
+        "type": "integer"
+      }
+    }
+  }
+}

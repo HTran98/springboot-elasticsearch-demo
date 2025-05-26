@@ -1,0 +1,34 @@
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "japanese_analyzer": {
+          "type": "custom",
+          "tokenizer": "kuromoji_tokenizer",
+          "filter": [
+            "kuromoji_baseform",
+            "kuromoji_part_of_speech",
+            "ja_stop",
+            "kuromoji_number",
+            "kuromoji_stemmer",
+            "lowercase"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "name": {
+        "type": "text",
+        "analyzer": "japanese_analyzer"
+      },
+      "summaryOrder": {
+        "type": "integer"
+      },
+      "stockNumber": {
+        "type": "integer"
+      }
+    }
+  }
+}

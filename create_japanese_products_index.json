@@ -2,17 +2,28 @@
   "settings": {
     "analysis": {
       "analyzer": {
-        "japanese_analyzer": {
+        "japanese_normalized": {
           "type": "custom",
           "tokenizer": "kuromoji_tokenizer",
+          "char_filter": [
+            "icu_normalizer"
+          ],
           "filter": [
             "kuromoji_baseform",
             "kuromoji_part_of_speech",
             "ja_stop",
             "kuromoji_number",
             "kuromoji_stemmer",
-            "lowercase"
+            "lowercase",
+            "icu_folding",
+            "ja_normalize"
           ]
+        }
+      },
+      "filter": {
+        "ja_normalize": {
+          "type": "kuromoji_readingform",
+          "use_romaji": false
         }
       }
     }
@@ -21,7 +32,7 @@
     "properties": {
       "name": {
         "type": "text",
-        "analyzer": "japanese_analyzer"
+        "analyzer": "japanese_normalized"
       },
       "summaryOrder": {
         "type": "integer"

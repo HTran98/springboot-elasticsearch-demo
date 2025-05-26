@@ -2,11 +2,20 @@
   "settings": {
     "analysis": {
       "analyzer": {
-        "vi_en_analyzer": {
-          "tokenizer": "standard",
+        "japanese_analyzer": {
+          "type": "custom",
+          "tokenizer": "kuromoji_tokenizer",
+          "char_filter": [
+            "icu_normalizer"
+          ],
           "filter": [
+            "kuromoji_baseform",
+            "kuromoji_part_of_speech",
+            "ja_stop",
+            "kuromoji_number",
+            "kuromoji_stemmer",
             "lowercase",
-            "asciifolding"
+            "icu_folding"
           ]
         }
       }
@@ -14,17 +23,14 @@
   },
   "mappings": {
     "properties": {
-      "id": {
-        "type": "keyword"
-      },
       "name": {
         "type": "text",
-        "analyzer": "vi_en_analyzer"
-      },
-      "stockNumber": {
-        "type": "integer"
+        "analyzer": "japanese_analyzer"
       },
       "summaryOrder": {
+        "type": "integer"
+      },
+      "stockNumber": {
         "type": "integer"
       }
     }

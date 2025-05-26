@@ -23,7 +23,7 @@ public class ProductOrderController {
 
     @PutMapping("/{id}")
     public ProductOrder update(@PathVariable Long id, @RequestBody ProductOrder order) {
-        order.getProduct().setId(id);
+        //order.getProduct().setId(id);
         return repository.save(order);
     }
 
